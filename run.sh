@@ -15,9 +15,9 @@ function procesar_ip {
         status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 2 --fail --head $ip)
     if [ $status -eq 200 ]; then
         positivos=$((positivos+1))
-        echo "🛸 La IP $ip:80 esta activa"
+        echo "🛸 $ip:80 esta activa"
         echo "📷 Creando screenshot"
-        cutycapt --max-wait=2000 --url=$ip:3000 --out=public/$ip_3000.png --user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36"
+        cutycapt --max-wait=2000 --url=$ip --out=public/$ip.png --user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36"
     else
         echo "🚧 La IP $ip:80 no está activa"
     fi
