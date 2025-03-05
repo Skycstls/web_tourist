@@ -6,7 +6,7 @@ sudo masscan -p80 $1 2>/dev/null | awk '{print $6 ":" $4}' | sed 's/\/tcp//' > /
 
 echo "Creando screenshots"
 #gowitness scan file -f /tmp/ips_raw.txt --screenshot-path ./screenshots
-gowitness scan file -f /tmp/ips_raw.txt --screenshot-path ./screenshots --status-codes 200,301,302
+gowitness scan file -q -f /tmp/ips_raw.txt --screenshot-path ./screenshots
 
 echo "Check"
 echo "Numero de ips: $(cat /tmp/ips_raw.txt | wc -l)"
